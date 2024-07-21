@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Comic Neue' !important;
+}
+.coat {
+  height: fit-content;
+  background-image: url('https://www.guiadasemana.com.br/contentFiles/system/pictures/2015/12/148951/original/logo.jpg');
+  background-size: cover;
+  background-position: center;
+}
+#root {
+  backdrop-filter: blur(8px);
+}
+.float-r{
+  float: right;
+}
+.float-l{
+  float: left;
+}
+.clear {
+  clear: both;
+}
+
+.eee {
+  color: #eee;
+}
+.yellow {
+  color: rgb(207, 207, 15)
+}
+.red {
+  color: rgb(184, 0, 0);
+}
+.border-text {
+  -webkit-text-stroke: 1px #000;
+}

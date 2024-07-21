@@ -1,0 +1,51 @@
+.choose-level {
+  background-color: rgb(61, 0, 0);;
+  width: fit-content;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  border: 1px solid #fff;
+  outline: 1px solid #000;
+  transition: .3s;
+}
+.choose-level:hover {
+  background-color: rgb(40, 0, 0);
+}
+.levels {
+  width: fit-content;
+  background-color: rgb(0, 69, 172);
+  margin: 0 auto;
+  border: 2px solid #fff;
+  outline: 2px solid #000;
+  margin-top: 20px;
+}
+.levels-title {
+  font-size: 30px;
+  padding: 10px 10px 0 10px;
+}
+.levels-box {
+  font-size: 25px;
+  margin-top: 10px;
+}
+.level-single {
+  text-align: center;
+  cursor: pointer;
+  transition: .3s;
+}
+.level-single:hover {
+  background-color: rgb(0, 33, 83);
+}
+.levels-box h2 {
+  padding: 10px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .levels-title {
+    font-size: 24px;
+  }
+  .level-single {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,18 @@
+header {
+  background-color: rgb(61, 0, 0);
+  padding: 20px 0;
+}
+.game-title a {
+  text-decoration: none;
+  color: #eee;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    text-align: center;
+  }
+  div.game-title {
+    float: none;
+    padding-bottom: 10px;
+  }
+}
