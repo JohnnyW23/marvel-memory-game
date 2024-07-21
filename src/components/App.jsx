@@ -16,7 +16,7 @@ function App() {
     346, 149, 620, 213, 332, 201, 530, 226, 659, 414, 333, 536,
     579, 30, 196, 687, 489, 490, 527, 107, 237, 273, 630, 106
   ];
-  const url = 'https://superheroapi.com/api/c864315ca70a501a45a5d6b85b3faeda/';
+  const url = 'https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/c864315ca70a501a45a5d6b85b3faeda/';
 
   const shuffleMarvelList = (event, array) => {
     const order = event.target.getAttribute('order');
@@ -147,10 +147,3 @@ function App() {
 }
 
 export default App
-
-/*
-  <div className='card-single' key={index}>
-    <img src={item.image} />
-    <p>{item.name}</p>
-  </div>
-*/

@@ -11,13 +11,15 @@ html, body {
   font-family: 'Comic Neue' !important;
 }
 .coat {
-  height: fit-content;
+  min-height: 100vh;
   background-image: url('https://www.guiadasemana.com.br/contentFiles/system/pictures/2015/12/148951/original/logo.jpg');
   background-size: cover;
   background-position: center;
 }
 #root {
+  min-height: 100vh;
   backdrop-filter: blur(8px);
+  padding-bottom: 20px;
 }
 .float-r{
   float: right;
