@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 import '../styles/GameScreen.css'
 
 export function GameScreen({
-  shuffleMarvelList, handleLevel, level,
-  data, chooseLevel, goal, score
+  shuffleGameList, handleLevel, level,
+  gameList, chooseLevel, goal, score
 }){  
 
   if(!level){ 
@@ -24,57 +24,49 @@ export function GameScreen({
         />
       </>
     )
-
   }else{
-    if (data.length < goal) {
-      return (
-        <div className='loading eee'>
-          <p>Loading. Please, wait.</p>
-        </div>
-      )
-
-    }else{
-      return (
-        <div className='game-screen'>
-          <div className='container'>
-            <div
-              className='choose-level border-text'
-              onClick={handleLevel}>
-              <h2>Choose new level</h2>
-            </div>
-            {
-              score == goal? (
-                <div className='game-win eee'>
-                  <h1>Congratulations! You reached high score and won the game!</h1>
-                  <h2>Choose a new level to restart your game.</h2>
-                </div>
-              ) : (
-                <div className='cards-display'>
-                  {data.map(hero => {
-                    return (
-                      <div
-                        className='card-single-wrapper'
-                        key={uuidv4()}>
+    return (
+      <div className='game-screen'>
+        <div className='container'>
+          <div
+            className='choose-level border-text'
+            onClick={handleLevel}>
+            <h2>Choose new level</h2>
+          </div>
+          {
+            score == goal? (
+              <div className='game-win eee'>
+                <h1>Congratulations! You reached high score and won the game!</h1>
+                <h2>Choose a new level to restart your game.</h2>
+              </div>
+            ) : (
+              <div className='cards-display'>
+                {gameList.map(card => {
+                  return (
+                    <div
+                      className='card-single-wrapper'
+                      key={uuidv4()}>
+                      <div className='card-single'>
                         <div
-                          className='card-single'
-                          order={hero.order}
-                          onClick={shuffleMarvelList}>
-                          <div className='image-wrapper'>
-                            <img src={hero.image} />
-                          </div>
-                          <div className='name'>
-                            <p>{hero.name}</p>
-                          </div>
+                          className='card-cover'
+                          order={card.order}
+                          onClick={shuffleGameList}
+                        ></div>
+                        <div className='image-wrapper'>
+                          <img src={'src/assets/marvel/' + card.image} />
+                        </div>
+                        <div className='name'>
+                          <p>{card.name}</p>
                         </div>
                       </div>
-                    )
-                  })}
-                </div>
-              )
-            }
-          </div>
+                    </div>
+                  )
+                })}
+              </div>
+            )
+          }
         </div>
-      );
-    }
+      </div>
+    );
   }
 }

@@ -1,33 +1,29 @@
 import { useState, useEffect } from 'react';
 import { GameScreen } from './GameScreen';
 import Header from './Header';
+import marvelHeroes from '../assets/marvel/marvel';
 import '../styles/App.css'
 
 function App() {
   const [level, setLevel] = useState(false);
-  const [data, setData] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [clicked, setClicked] = useState([])
   const [gameList, setGameList] = useState([])
   const [goal, setGoal] = useState(null);
 
-  const marvelsIds = [
-    346, 149, 620, 213, 332, 201, 530, 226, 659, 414, 333, 536,
-    579, 30, 196, 687, 489, 490, 527, 107, 237, 273, 630, 106
-  ];
-  const url = 'https://cors-anywhere.herokuapp.com/https://superheroapi.com/api/c864315ca70a501a45a5d6b85b3faeda/';
-
-  const shuffleMarvelList = (event, array) => {
+  const shuffleGameList = (event, array) => {
     const order = event.target.getAttribute('order');
-    setClicked([...clicked, order])
+    setClicked([...clicked, order]);
+    console.log(order)
+    console.log(event.target)
 
     const newData = [...array];
     for (let i = newData.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [newData[i], newData[j]] = [newData[j], newData[i]];
     }
-    setData(newData);
+    setGameList(newData);
   }
 
   const handleLevel = (level) => {
@@ -54,18 +50,18 @@ function App() {
     }
     setGoal(listLength);
 
-    const newMarvelsIds = [...marvelsIds];
-    for (let i = newMarvelsIds.length - 1; i > 0; i--) {
+    const newMarvelHeroes = [...marvelHeroes];
+    for (let i = newMarvelHeroes.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [newMarvelsIds[i], newMarvelsIds[j]] = [newMarvelsIds[j], newMarvelsIds[i]];
+      [newMarvelHeroes[i], newMarvelHeroes[j]] = [newMarvelHeroes[j], newMarvelHeroes[i]];
     }
 
-    const newIdsOrder = [...newMarvelsIds].slice(0, listLength);
-    for (let i = newIdsOrder.length - 1; i > 0; i--) {
+    const newCardsOrder = [...newMarvelHeroes].slice(0, listLength);
+    for (let i = newCardsOrder.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [newIdsOrder[i], newIdsOrder[j]] = [newIdsOrder[j], newIdsOrder[i]];
+      [newCardsOrder[i], newCardsOrder[j]] = [newCardsOrder[j], newCardsOrder[i]];
     }
-    setGameList(newIdsOrder);
+    setGameList(newCardsOrder);
     handleLevel(level);
     setScore(0);
     setHighScore(0);
@@ -101,30 +97,6 @@ function App() {
 
   }, [clicked])
 
-  const fetchData = async () => {
-    setData([]);
-    try {
-      const promises = gameList.map(id => fetch(url + id).then(res => res.json()));
-      const results = await Promise.all(promises);
-      const transformedData = results.map((result, index) => {
-        const transformedItem = {
-          name: result.name,
-          image: result.image.url,
-          order: index
-        };
-        return transformedItem;
-      });
-      setData(transformedData);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-  useEffect(() => {
-    if(gameList.length > 0){
-      fetchData();
-    }
-  }, [gameList]);
   
   return (
     <>
@@ -133,10 +105,10 @@ function App() {
         highScore={highScore}
       />
       <GameScreen
-        shuffleMarvelList={(event) => {shuffleMarvelList(event, data)}}
+        shuffleGameList={(event) => {shuffleGameList(event, gameList)}}
         handleLevel={() => {handleLevel(level)}}
         level={level}
-        data={data}
+        gameList={gameList}
         chooseLevel={(event) => chooseLevel(event)}
         goal={goal}
         score={score}
