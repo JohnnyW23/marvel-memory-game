@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { GameScreen } from './GameScreen';
 import Header from './Header';
-import marvelHeroes from '../assets/marvel/marvel';
+import marvelHeroes from '../game-lists/marvel';
 import '../styles/App.css'
 
 function App() {
@@ -15,8 +15,6 @@ function App() {
   const shuffleGameList = (event, array) => {
     const order = event.target.getAttribute('order');
     setClicked([...clicked, order]);
-    console.log(order)
-    console.log(event.target)
 
     const newData = [...array];
     for (let i = newData.length - 1; i > 0; i--) {

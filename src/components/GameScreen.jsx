@@ -53,7 +53,7 @@ export function GameScreen({
                           onClick={shuffleGameList}
                         ></div>
                         <div className='image-wrapper'>
-                          <img src={'./src/assets/marvel/' + card.image} />
+                          <img src={'/assets/marvel/' + card.image} />
                         </div>
                         <div className='name'>
                           <p>{card.name}</p>
