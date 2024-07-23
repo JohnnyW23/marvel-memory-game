@@ -1,8 +1,8 @@
 import '../styles/LevelBox.css'
 
-export default function LevelBox({chooseLevel}){
+export default function LevelBox({styling, chooseLevel}){
   return (
-    <div className='levels'>
+    <div className='levels' style={styling}>
       <div className='levels-title eee border-text'>
         <h2>Choose your level:</h2>
       </div>

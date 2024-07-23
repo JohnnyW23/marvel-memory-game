@@ -31,9 +31,10 @@ marvelNames.map((hero, index) => {
   marvelHeroes.push(
     {
       name: hero.name,
-      image: `marvel${index}.jpeg`,
+      image: `/assets/marvel/marvel${index}.jpeg`,
       order: index
     }
-  )})
+  )
+})
 
 export default marvelHeroes;

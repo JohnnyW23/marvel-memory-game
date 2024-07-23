@@ -1,13 +1,13 @@
 import ScoreBoard from './ScoreBoard'
 import '../styles/Header.css'
 
-export default function Header({score, highScore}){
+export default function Header({title, styling, score, highScore}){
 
   return (
-    <header>
+    <header style={styling}>
       <div className='container eee'>
         <div className='game-title float-l'>
-          <h1>MARVEL MEMORY GAME</h1>
+          <h1>{title} MEMORY GAME</h1>
           <p><a
             href='https://github.com/JohnnyW23'
             target='_blank'

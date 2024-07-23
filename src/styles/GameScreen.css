@@ -1,3 +1,26 @@
+.theme-box {
+  background-color: #001a29;
+  width: fit-content;
+  padding: 15px;
+  text-align: center;
+  color: white;
+  border: 2px solid #fff;
+  outline: 2px solid #000;
+  margin: 50px auto;
+}
+
+.theme-box h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.theme-box img {
+  width: 200px;
+  vertical-align: middle;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
 .instructions, .game-win {
   width: 100%;
   max-width: 1200px;
@@ -9,6 +32,25 @@
   font-size: 28px;
   text-align: justify;
   line-height: 35px;
+}
+
+.choose-level, .choose-theme {
+  width: fit-content;
+  margin: 20px 0;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  border: 1px solid #fff;
+  outline: 1px solid #000;
+  transition: .3s;
+}
+
+.choose-level h2, .choose-theme h2 {
+  padding: 10px;
+  transition: .3s;
+}
+.choose-level h2:hover, .choose-theme h2:hover {
+  background-color:rgba(0, 0, 0, .3);
 }
 
 .game-win {
@@ -71,5 +113,9 @@
   }
   .card-single-wrapper {
     width: calc(100% / 4);
+  }
+
+  div.choose-level, div.choose-theme {
+    float: none;
   }
 }

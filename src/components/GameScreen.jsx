@@ -4,8 +4,27 @@ import '../styles/GameScreen.css'
 
 export function GameScreen({
   shuffleGameList, handleLevel, level,
-  gameList, chooseLevel, goal, score
-}){  
+  gameList, chooseLevel, goal, score,
+  themeData, handleTheme
+}){
+
+  if(!themeData.active){
+    return (
+      <div className='theme-box'>
+        <h2>Select your theme:</h2>
+        <img
+          src='/assets/marvel/logo-marvel.png'
+          value='marvel'
+          onClick={handleTheme}
+        />
+        <img
+          src='/assets/dc/logo-dc.png'
+          value='dc'
+          onClick={handleTheme}
+        />
+      </div>
+    )
+  }
 
   if(!level){ 
     return (
@@ -21,6 +40,7 @@ export function GameScreen({
         }
         <LevelBox 
           chooseLevel={chooseLevel}
+          styling={themeData.levelBox}
         />
       </>
     )
@@ -29,10 +49,18 @@ export function GameScreen({
       <div className='game-screen'>
         <div className='container'>
           <div
-            className='choose-level border-text'
+            className='choose-level border-text float-l'
+            style={themeData.mainColor}
             onClick={handleLevel}>
             <h2>Choose new level</h2>
           </div>
+          <div
+            className='choose-theme border-text float-r'
+            style={themeData.mainColor}
+            onClick={handleTheme}>
+            <h2>Choose game theme</h2>
+          </div>
+          <div className='clear'></div>
           {
             score == goal? (
               <div className='game-win eee'>
@@ -53,7 +81,7 @@ export function GameScreen({
                           onClick={shuffleGameList}
                         ></div>
                         <div className='image-wrapper'>
-                          <img src={'/assets/marvel/' + card.image} />
+                          <img src={card.image} />
                         </div>
                         <div className='name'>
                           <p>{card.name}</p>
